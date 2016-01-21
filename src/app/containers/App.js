@@ -33,6 +33,7 @@ class AppController {
           query = url.pathname;
         } else {
           this.error = {message: 'Only works for GitHub'};
+          return;
         }
       }
     }

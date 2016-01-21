@@ -23,7 +23,7 @@ class RepoController {
               this.repo.contributors = contributors.data;
             });
         } else {
-          this.error = {message: 'The repo you are looking for does not exist'};
+          this.error = {message: 'Oops! The repo you are looking for does not exist'};
         }
       });
   }
