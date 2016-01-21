@@ -53,7 +53,7 @@
         <div class="flex flex-wrap p3">
           <div class="col-12 sm-col-6 flex mb2" ng-repeat="contributor in $ctrl.repo.contributors">
             <a ui-sref="users({ user: contributor.login })">
-              <img src="{{ contributor.avatar_url }}&s=40" style="width: 40px; height: 40px;">
+              <img ng-src="{{ contributor.avatar_url }}&s=40" style="width: 40px; height: 40px;">
             </a>
             <div class="ml2">
               <h5 class="h3 m0 regular">

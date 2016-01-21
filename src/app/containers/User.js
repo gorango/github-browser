@@ -13,23 +13,19 @@ class UserController {
       githubService
       .getResource('users', user)
       .then(data => {
-        if (data.status === 200) {
-          this.user = data.data;
-          this.http.get(this.user.repos_url)
-            .then(repos => {
-              // Sort the repos by number of stars
-              this.user.repos = repos.data.sort((a, b) => {
-                if (a.stargazers_count < b.stargazers_count) {
-                  return 1;
-                }
-                if (a.stargazers_count > b.stargazers_count) {
-                  return -1;
-                }
-                return 0;
-              });
-            });
-        } else {
+        if (data.status > 400) {
           this.error = {message: 'The user you are looking for does not exist'};
+        } else {
+          this.user = data;
+          this.user.repos = data.repos.sort((a, b) => {
+            if (a.stargazers_count < b.stargazers_count) {
+              return 1;
+            }
+            if (a.stargazers_count > b.stargazers_count) {
+              return -1;
+            }
+            return 0;
+          });
         }
       });
     } else {

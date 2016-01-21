@@ -1,8 +1,4 @@
-import {API_HOST} from '../constants/SearchFilters';
-
-function generateUrl(type, value) {
-  return `${API_HOST}${type}/${value}`;
-}
+import {API_HOST, SECOND_SEARCH} from '../constants/SearchFilters';
 
 export class GitHubService {
   /** @ngInject */
@@ -12,12 +8,19 @@ export class GitHubService {
   }
 
   getResource(type, value) {
-    const url = generateUrl(type, value);
-    return this.http
-      .get(url)
-      .then(
-        data => data,
-        err => err
-      );
+    const firstUrl = `${API_HOST}${type}/${value}`;
+
+    return this.http.get(firstUrl).then(res => {
+      if (res.status === 200) {
+        const result = res.data;
+        const prop = SECOND_SEARCH[type];
+        const secondUrl = result[`${prop}_url`];
+
+        return this.http.get(secondUrl).then(res => {
+          result[prop] = res.data;
+          return result;
+        });
+      }
+    }, err => err);
   }
 }
