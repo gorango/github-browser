@@ -2,14 +2,18 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'ace-css/css/ace.css';
 
-import {hello} from './app/hello';
 import routesConfig from './routes';
+import {GitHubService} from './app/services/github.js';
+import {App} from './app/containers/App';
+import {Repo} from './app/containers/Repo';
+import {User} from './app/containers/User';
 
 import './index.scss';
 
-export const app = 'app';
-
 angular
-  .module(app, ['ui.router'])
+  .module('app', ['ui.router'])
   .config(routesConfig)
-  .component('app', hello);
+  .service('githubService', GitHubService)
+  .component('app', App)
+  .component('repo', Repo)
+  .component('user', User);

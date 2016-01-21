@@ -7,6 +7,13 @@
     "type": "git"
   },
   "author": "Goran <gospaso@gmail.com>",
+  "scripts": {
+    "build": "gulp",
+    "serve": "gulp serve",
+    "serve:dist": "gulp serve:dist",
+    "test": "gulp test",
+    "test:auto": "gulp test:auto"
+  },
   "dependencies": {
     "ace-css": "^1.1.0",
     "angular": "^1.5.0",
@@ -68,13 +75,6 @@
     "style-loader": "^0.13.0",
     "webpack": "2.1.0-beta.27",
     "webpack-fail-plugin": "^1.0.5"
-  },
-  "scripts": {
-    "build": "gulp",
-    "serve": "gulp serve",
-    "serve:dist": "gulp serve:dist",
-    "test": "gulp test",
-    "test:auto": "gulp test:auto"
   },
   "eslintConfig": {
     "globals": {

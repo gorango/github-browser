@@ -1,0 +1,51 @@
+<div class="max-width-2 mx-auto mt3">
+  <form class="" ng-submit="$ctrl.search($ctrl.query)" novalidate autocomplete="off">
+    <div class="flex">
+      <input ng-model="$ctrl.query" type="text" name="query" class="input m0 mr1" placeholder="gorango/maxmind">
+      <button type="submit" class="btn btn-outline border-gray">Search</button>
+    </div>
+  </form>
+</div>
+
+<div class="max-width-3 mx-auto mt4">
+  <div class="mt4 p3 bg-white border border-silver">
+
+    <div ng-if="$ctrl.repo">
+
+      <div>
+        <h1 class="h2 regular inline-block">
+          <a class="text-decoration-none" href="{{ $ctrl.repo.owner.html_url }}" target="_blank">
+            {{ $ctrl.repo.owner.login }}
+          </a>
+        </h1>
+        <span class="h2 inline-block">/</span>
+        <h2 class="h2 inline-block">
+          <a class="text-decoration-none" href="{{ $ctrl.repo.html_url }}" target="_blank">
+            {{ $ctrl.repo.name }}
+          </a>
+        </h2>
+        <p ng-if="$ctrl.repo.description.length">{{ $ctrl.repo.description }}</p>
+      </div>
+
+      <div>
+        <p class="m0">
+          Created: <span ng-bind="$ctrl.repo.created_at | date: medium"></span>
+        </p>
+        <p class="m0">
+          Last update: <span ng-bind="$ctrl.repo.updated_at | date: medium"></span>
+        </p>
+        <p class="m0">
+          Stars: <span ng-bind="$ctrl.repo.stargazers_count"></span>
+        </p>
+        <p class="m0" ng-if="$ctrl.repo.has_issues">
+          Issues: <span ng-bind="$ctrl.repo.open_issues"></span>
+        </p>
+      </div>
+    </div>
+
+    <div ng-if="$ctrl.error">
+      <p>{{ $ctrl.error.message }}</p>
+    </div>
+
+  </div>
+</div>

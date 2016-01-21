@@ -9,5 +9,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app', {
       url: '/',
       component: 'app'
+    })
+    .state('repos', {
+      url: '/repos/:repo',
+      component: 'repo'
+    })
+    .state('users', {
+      url: '/users/:user',
+      component: 'user'
     });
 }
