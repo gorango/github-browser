@@ -10,10 +10,19 @@
         <div class="flex-auto flex flex-column justify-center pl2">
           <h1 class="h2 m0">{{ $ctrl.user.name }}</h1>
           <h2 class="h3 m0 regular">{{ $ctrl.user.login }}</h2>
-          <span class="pt1 mt1 border-top border-silver"></span>
-          <small>Member since {{ $ctrl.user.created_at | date: 'y' }}</small>
-          <small><a class="text-decoration-none" ng-if="$ctrl.user.company" ui-sref="users({ user: $ctrl.user.company.slice(1) })">{{ $ctrl.user.company }}</a></small>
-          <small>{{ $ctrl.user.followers }} followers</small>
+          <span class="mt1 border-top border-silver"></span>
+          <div class="flex mt1">
+            <i class="material-icons muted" style="font-size: 18px">access_time</i>
+            <small class="pl1">Joined {{ $ctrl.user.created_at | date: 'y' }}</small>
+          </div>
+          <div class="flex mt1" ng-if="$ctrl.user.company">
+            <i class="material-icons muted" style="font-size: 18px">work</i>
+            <small class="pl1"><a class="text-decoration-none" ui-sref="users({ user: $ctrl.user.company.slice(1) })">{{ $ctrl.user.company }}</a></small>
+          </div>
+          <div class="flex mt1">
+            <i class="material-icons muted" style="font-size: 18px">people</i>
+            <small class="pl1">{{ $ctrl.user.followers }} followers</small>
+          </div>
         </div>
       </div>
 
@@ -30,21 +39,21 @@
             <div class="flex">
               <div class="flex-auto relative flex items-center">
                 <span ng-if="repo.language" class="flex items-center">
-                  <i class="muted absolute left-0 devicon-{{ repo.language.toLowerCase() }}-plain"></i>
-                  <span class="pl3" ng-bind="repo.language"></span>
+                  <i class="muted material-icons absolute left-0 muted" style="font-size: 18px">code</i>
+                  <span class="pl2 ml1" ng-bind="repo.language"></span>
                 </span>
               </div>
-              <div ng-if="repo.forks_count > 0" class="relative flex items-center ml2" style="min-width: 50px;">
-                <i class="muted material-icons absolute left-0">call_split</i>
-                <span class="pl3" ng-bind="repo.forks_count"></span>
+              <div ng-if="repo.forks_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+                <i class="muted material-icons absolute left-0 muted" style="font-size: 18px">call_split</i>
+                <span class="pl2 ml1" ng-bind="repo.forks_count"></span>
               </div>
-              <div ng-if="repo.open_issues_count > 0" class="relative flex items-center ml2" style="min-width: 50px;">
-                <i class="muted material-icons absolute left-0">info_outline</i>
-                <span class="pl3" ng-bind="repo.open_issues_count"></span>
+              <div ng-if="repo.open_issues_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+                <i class="muted material-icons absolute left-0 muted" style="font-size: 18px">info_outline</i>
+                <span class="pl2 ml1" ng-bind="repo.open_issues_count"></span>
               </div>
-              <div ng-if="repo.stargazers_count > 0" class="relative flex items-center ml2" style="min-width: 50px;">
-                <i class="muted material-icons absolute left-0">star_rate</i>
-                <span class="pl3" ng-bind="repo.stargazers_count"></span>
+              <div ng-if="repo.stargazers_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+                <i class="muted material-icons absolute left-0 muted" style="font-size: 18px">star_rate</i>
+                <span class="pl2 ml1" ng-bind="repo.stargazers_count"></span>
               </div>
             </div>
           </div>
