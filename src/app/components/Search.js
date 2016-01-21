@@ -3,6 +3,7 @@ import {
   REPO_PATH,
   TRAILING_SLASH
 } from '../constants/SearchFilters.js';
+import './search.scss';
 
 class SearchController {
   /** @ngInject */

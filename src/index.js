@@ -11,8 +11,10 @@ import {User} from './app/containers/User';
 import {Error} from './app/components/Error';
 import {Logo} from './app/components/Logo';
 import {Search} from './app/components/Search';
-
+// General styles
 import './index.scss';
+import './app/components/button.scss';
+import './app/components/form.scss';
 
 angular
   .module('app', ['ui.router'])
