@@ -2,7 +2,7 @@
 
   <logo link="true"></logo>
 
-  <div class="mb4 mt2 bg-white border border-silver">
+  <div class="fade-in-up mb4 mt2 bg-white border border-silver" ng-if="$ctrl.repo || $ctrl.error.message">
 
     <div ng-if="$ctrl.repo" class="">
       <div class="py2 px3 center border-bottom border-silver">
@@ -77,4 +77,6 @@
     </div>
 
   </div>
+
+  <loading ng-if="!$ctrl.repo && !$ctrl.error.message"></loading>
 </div>

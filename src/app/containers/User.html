@@ -2,7 +2,8 @@
 
   <logo link="true"></logo>
 
-  <div class="mb4 mt2 bg-white border border-silver overflow-hidden">
+  <div class="fade-in-up mb4 mt2 bg-white border border-silver overflow-hidden"
+    ng-if="$ctrl.user || $ctrl.error.message">
 
     <div ng-if="$ctrl.user">
 
@@ -76,4 +77,6 @@
       <p class="bold">{{ $ctrl.error.message }}</p>
     </div>
   </div>
+
+  <loading ng-if="!$ctrl.user && !$ctrl.error.message"></loading>
 </div>

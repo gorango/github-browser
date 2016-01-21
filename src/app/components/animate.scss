@@ -1,0 +1,11 @@
+.fade-in-up.ng-enter {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s ease-out;
+}
+
+.fade-in-up.ng-enter.ng-enter-active,
+.fade-in-up.ng-move.ng-move-active {
+  opacity: 1;
+  transform: translateY(0);
+}
