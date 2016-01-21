@@ -1,5 +1,6 @@
 import angular from 'angular';
 import 'angular-ui-router';
+import 'angular-animate';
 
 import routesConfig from './routes';
 import {GitHubService} from './app/services/github.js';
@@ -17,7 +18,7 @@ import './app/components/button.scss';
 import './app/components/form.scss';
 
 angular
-  .module('app', ['ui.router'])
+  .module('app', ['ui.router', 'ngAnimate'])
   .config(routesConfig)
   .service('githubService', GitHubService)
   .component('app', App)
