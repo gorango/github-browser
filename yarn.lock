@@ -40,15 +40,6 @@ accepts@1.1.4:
     mime-types "~2.0.4"
     negotiator "0.4.9"
 
-ace-css:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ace-css/-/ace-css-1.1.0.tgz#1ddd63b5f8f93221facfa934ca406e0a95b3309d"
-  dependencies:
-    basscss "^8.0.0"
-    basscss-addons "^1.0.0"
-    basscss-basic "^1.0.0"
-    colors.css "^2.3.0"
-
 acorn-jsx@^3.0.0, acorn-jsx@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-3.0.1.tgz#afdf9488fb1ecefc8348f6fb22f464e32a58b36b"
@@ -6800,4 +6791,3 @@ yauzl@2.4.1:
 yeast@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
-

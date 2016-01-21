@@ -1,6 +1,5 @@
 import angular from 'angular';
 import 'angular-ui-router';
-import 'ace-css/css/ace.css';
 
 import routesConfig from './routes';
 import {GitHubService} from './app/services/github.js';
