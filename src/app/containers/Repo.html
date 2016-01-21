@@ -1,46 +1,60 @@
-<div class="max-width-2 mx-auto mt3">
-  <form class="" ng-submit="$ctrl.search($ctrl.query)" novalidate autocomplete="off">
-    <div class="flex">
-      <input ng-model="$ctrl.query" type="text" name="query" class="input m0 mr1" placeholder="gorango/maxmind">
-      <button type="submit" class="btn btn-outline border-gray">Search</button>
-    </div>
-  </form>
-</div>
+<div class="max-width-2 mx-auto">
+  <div class="my4 bg-white border border-silver">
 
-<div class="max-width-3 mx-auto mt4">
-  <div class="mt4 p3 bg-white border border-silver">
+    <div ng-if="$ctrl.repo" class="">
 
-    <div ng-if="$ctrl.repo">
-
-      <div>
-        <h1 class="h2 regular inline-block">
-          <a class="text-decoration-none" href="{{ $ctrl.repo.owner.html_url }}" target="_blank">
+      <div class="py2 px3 bg-blue white center">
+        <h1 class="h2 m0 regular inline-block">
+          <a class="white text-decoration-none" ui-sref="users({ user: $ctrl.repo.owner.login })">
             {{ $ctrl.repo.owner.login }}
           </a>
         </h1>
-        <span class="h2 inline-block">/</span>
-        <h2 class="h2 inline-block">
-          <a class="text-decoration-none" href="{{ $ctrl.repo.html_url }}" target="_blank">
+        <span class="h2 m0 inline-block">/</span>
+        <h2 class="h2 m0 inline-block">
+          <a class="white text-decoration-none" href="{{ $ctrl.repo.html_url }}" target="_blank" title="View repo on GitHub">
             {{ $ctrl.repo.name }}
           </a>
         </h2>
-        <p ng-if="$ctrl.repo.description.length">{{ $ctrl.repo.description }}</p>
       </div>
 
-      <div>
-        <p class="m0">
-          Created: <span ng-bind="$ctrl.repo.created_at | date: medium"></span>
-        </p>
-        <p class="m0">
-          Last update: <span ng-bind="$ctrl.repo.updated_at | date: medium"></span>
-        </p>
-        <p class="m0">
-          Stars: <span ng-bind="$ctrl.repo.stargazers_count"></span>
-        </p>
-        <p class="m0" ng-if="$ctrl.repo.has_issues">
-          Issues: <span ng-bind="$ctrl.repo.open_issues"></span>
-        </p>
+      <div class="py2 px3 border-bottom border-silver">
+        <p class="m0 center" ng-if="$ctrl.repo.description.length">{{ $ctrl.repo.description }}</p>
+        <hr class="my1">
+        <div class="sm-flex">
+          <div class="col-12 sm-col-6 flex flex-wrap">
+            <small class="col-6 right-align pr1">Created:</small>
+            <small class="col-6" ng-bind="$ctrl.repo.created_at | date: medium"></small>
+            <small class="col-6 right-align pr1">Updated:</small>
+            <small class="col-6" ng-bind="$ctrl.repo.updated_at | date: medium"></small>
+          </div>
+          <div class="col-12 sm-col-6 flex flex-wrap">
+            <small class="col-6 right-align pr1">Stars:</small>
+            <small class="col-6" ng-bind="$ctrl.repo.stargazers_count"></small>
+            <small class="col-6 right-align pr1">Issues:</small>
+            <small class="col-6" ng-bind="$ctrl.repo.open_issues"></small>
+          </div>
+        </div>
       </div>
+
+
+      <div ng-if="$ctrl.repo.contributors" class="">
+        <h2 class="center m0 py2 bg-blue white">
+          Contributors <small class="muted">({{ $ctrl.repo.contributors.length }})</small>
+        </h2>
+
+        <div class="flex flex-wrap p3">
+          <div class="col-12 sm-col-6 flex mb2" ng-repeat="contributor in $ctrl.repo.contributors">
+            <img src="{{ contributor.avatar_url }}&s=60" style="width: 40px; height: 40px;">
+            <div class="ml2">
+              <h5 class="h3 m0 regular">
+                <a class="text-decoration-none" ui-sref="users({ user: contributor.login })">{{ contributor.login }}</a>
+              </h5>
+              <small class="m0">{{ contributor.contributions }} commits</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div ng-if="$ctrl.error">
