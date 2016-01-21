@@ -1,18 +1,13 @@
 
 class UserController {
   /** @ngInject */
-  constructor($state, $stateParams, githubService, $log, $http) {
-    this.console = $log;
-    this.state = $state;
-    this.http = $http;
+  constructor($stateParams, githubService) {
     this.gh = githubService;
 
     const user = $stateParams.user;
 
     if (user) {
-      githubService
-      .getResource('users', user)
-      .then(data => {
+      githubService.getResource('users', user).then(data => {
         if (data.status > 400) {
           this.error = {message: 'The user you are looking for does not exist'};
         } else {

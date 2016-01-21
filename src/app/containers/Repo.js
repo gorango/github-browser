@@ -1,9 +1,7 @@
 class RepoController {
   /** @ngInject */
-  constructor($state, $stateParams, githubService, $log, $http) {
-    this.console = $log;
+  constructor($state, $stateParams, githubService) {
     this.state = $state;
-    this.http = $http;
     this.gh = githubService;
     this.error = {};
 

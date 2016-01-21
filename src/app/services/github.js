@@ -2,9 +2,8 @@ import {API_HOST, SECOND_SEARCH} from '../constants/SearchFilters';
 
 export class GitHubService {
   /** @ngInject */
-  constructor($http, $log) {
+  constructor($http) {
     this.http = $http;
-    this.console = $log;
   }
 
   getResource(type, value) {
@@ -21,6 +20,7 @@ export class GitHubService {
           return result;
         });
       }
+      return res;
     }, err => err);
   }
 }
