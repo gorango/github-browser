@@ -1,0 +1,32 @@
+.btn {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.125rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  height: auto;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  color: inherit;
+  background-color: transparent;
+
+  &:hover {
+    border-color: currentcolor;
+    box-shadow: inset 0 0 0 20rem rgba(0,0,0,.0625);
+  }
+
+  &:active {
+    box-shadow: inset 0 0 0 20rem rgba(0,0,0,.125), inset 0 3px 4px 0 rgba(0,0,0,.25), 0 0 1px rgba(0,0,0,.125);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(0,0,0,.125);
+    box-shadow: 0 0 0 3px rgba(0,0,0,.25);
+  }
+}

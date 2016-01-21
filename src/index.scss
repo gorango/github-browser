@@ -1,4 +1,5 @@
-body {
-  color: #222;
-  background-color: #f7f7f7;
-}
+@import './app/containers/app.scss';
+@import './app/components/button.scss';
+@import './app/components/form.scss';
+@import './app/components/logo.scss';
+@import './app/components/search.scss';
