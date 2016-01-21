@@ -5,6 +5,7 @@ import {
 } from '../constants/SearchFilters.js';
 
 class SearchController {
+  /** @ngInject */
   constructor($window, $timeout, $state) {
     this.$window = $window;
     this.$timeout = $timeout;
