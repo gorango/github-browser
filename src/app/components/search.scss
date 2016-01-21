@@ -1,0 +1,21 @@
+form.search {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+
+  label {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  a { cursor: pointer }
+
+  .searchbar {
+    display: flex;
+
+    input {
+      margin: 0;
+      margin-right: 0.5rem;
+    }
+  }
+}

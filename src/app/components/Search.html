@@ -1,0 +1,21 @@
+<form class="search"
+  ng-submit="$ctrl.search($ctrl.query)"
+  novalidate
+  autocomplete="off">
+
+  <label for="query">
+    <span>Try </span>
+    <a ng-click="$ctrl.tryExample()" ng-bind='$ctrl.example'></a>
+  </label>
+
+  <div class="searchbar">
+    <input type="text"
+      name="query"
+      ng-model="$ctrl.query"
+      placeholder="{{ $ctrl.placeholder }}">
+    <button class="btn" type="submit">Search</button>
+  </div>
+
+  <error message="$ctrl.error.message" color='"red"'></error>
+
+</form>
