@@ -8,6 +8,7 @@
   },
   "author": "Goran <gospaso@gmail.com>",
   "dependencies": {
+    "ace-css": "^1.1.0",
     "angular": "^1.5.0",
     "angular-ui-router": "1.0.0-beta.1"
   },

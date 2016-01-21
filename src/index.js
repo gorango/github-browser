@@ -1,5 +1,6 @@
 import angular from 'angular';
 import 'angular-ui-router';
+import 'ace-css/css/ace.css';
 
 import {hello} from './app/hello';
 import routesConfig from './routes';
