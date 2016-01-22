@@ -15,9 +15,13 @@ import {Logo} from './app/components/Logo';
 import {Search} from './app/components/Search';
 // General styles
 import './index.scss';
-import './app/components/animate.scss';
-import './app/components/button.scss';
-import './app/components/form.scss';
+import './app/styles/animate.scss';
+import './app/styles/button.scss';
+import './app/styles/form.scss';
+// Component styles
+import './app/styles/loading.scss';
+import './app/styles/logo.scss';
+import './app/styles/search.scss';
 
 angular
   .module('app', ['ui.router', 'ngAnimate'])
