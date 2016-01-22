@@ -55,7 +55,7 @@ module.exports = {
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer]
+        postcss: () => [autoprefixer({browsers: ['last 2 versions']})]
       },
       debug: true
     })

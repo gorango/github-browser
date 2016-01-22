@@ -60,7 +60,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: () => [autoprefixer]
+        postcss: () => [autoprefixer({browsers: ['last 5 versions']})]
       }
     })
   ],
