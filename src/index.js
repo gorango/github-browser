@@ -5,9 +5,9 @@ import 'angular-animate';
 import routesConfig from './routes';
 import {GitHubService} from './app/services/github.js';
 // Containers
-import {App} from './app/containers/App';
-import {Repo} from './app/containers/Repo';
-import {User} from './app/containers/User';
+import {App} from './app/views/App';
+import {Repo} from './app/views/Repo';
+import {User} from './app/views/User';
 // Components
 import {Error} from './app/components/Error';
 import {Loading} from './app/components/Loading';
