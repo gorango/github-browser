@@ -9,10 +9,9 @@ class SearchController {
     this.$state = $state;
     this.query = this.query || '';
     this.error = this.error || {};
-    this.focus();
-
     this.example = 'https://github.com/angular/angular';
     this.placeholder = 'angular/angular';
+    this.focus();
   }
 
   focus() {
