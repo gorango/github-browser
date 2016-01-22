@@ -1,9 +1,5 @@
-import {
-  ALLOWED_HOST,
-  REPO_PATH,
-  TRAILING_SLASH
-} from '../constants/SearchFilters.js';
-import './search.scss';
+import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../constants/Errors';
+import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../constants/SearchFilters.js';
 
 class SearchController {
   /** @ngInject */
@@ -19,11 +15,6 @@ class SearchController {
     this.placeholder = 'angular/angular';
   }
 
-  tryExample() {
-    this.query = this.example;
-    this.focus();
-  }
-
   focus() {
     this.$timeout(() => {
       const element = this.$window.document.querySelector('.searchbar input');
@@ -33,12 +24,18 @@ class SearchController {
     }, 0);
   }
 
+  tryExample() {
+    this.query = this.example;
+    this.focus();
+  }
+
+  throwError(message) {
+    this.error = {message};
+  }
+
   search(query) {
     if (!query) {
-      this.error = {
-        message: 'You need to provide a query'
-      };
-      return;
+      return this.throwError(NO_QUERY);
     }
 
     this.error = {};
@@ -52,13 +49,9 @@ class SearchController {
     } finally {
       if (url) {
         if (url.host === ALLOWED_HOST) {
-          // the URL constructor provides a handy pathname property
           query = url.pathname;
         } else {
-          this.error = {
-            message: 'Only works for GitHub'
-          };
-          return;
+          return this.throwError(GITHUB_ONLY);
         }
       }
     }
@@ -69,13 +62,9 @@ class SearchController {
       // Replacing the forward-slash to avoid ugly reformatting in the url
       const prettyPath = repo[0].replace('/', '::');
       repo = prettyPath;
-      this.$state.go('repos', {
-        repo
-      });
+      this.$state.go('repos', {repo});
     } else {
-      this.error = {
-        message: `Your query doesn't look quite right`
-      };
+      return this.throwError(BAD_QUERY);
     }
   }
 }
