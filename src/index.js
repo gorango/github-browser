@@ -17,6 +17,7 @@ import {Loading} from './app/components/Loading';
 import {Logo} from './app/components/Logo';
 import {Search} from './app/components/Search';
 // General styles
+import 'ace-css/css/ace.css';
 import './index.scss';
 import './app/styles/animate.scss';
 import './app/styles/button.scss';
