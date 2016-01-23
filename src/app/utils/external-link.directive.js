@@ -1,6 +1,6 @@
 export default function () {
   function link(scope, el, attrs) {
-    const url = attrs.leavePage;
+    const url = attrs.externalLink;
     const tmpl = `
       <a href="${url}"
         target="_blank"
