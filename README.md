@@ -4,8 +4,6 @@
 
 ## Build Setup
 
-(you can swap `yarn` with `npm`)
-
 ``` bash
 # install dependencies
 yarn # or npm i
@@ -19,3 +17,5 @@ yarn run build
 # run tests
 yarn test
 ```
+
+(you can use `npm` instead of `yarn`)
