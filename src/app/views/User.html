@@ -2,33 +2,37 @@
 
   <logo link="true"></logo>
 
-  <div class="fade-in-up mb4 mt2 bg-white border border-silver overflow-hidden"
-    ng-if="$ctrl.user || $ctrl.error.message">
-
+  <section ng-if="$ctrl.user || $ctrl.error.message"
+    class="user-container fade-in-up mb4 mt2 bg-white border border-silver overflow-hidden">
     <div ng-if="$ctrl.user">
-
-      <div class="p3 flex">
-        <div style="background: #f7f7f7;">
-          <img class="rounded" ng-src="{{ $ctrl.user.avatar_url }}" width="150" height="150"/>
-        </div>
+      <header class="p3 flex">
+        <img class="rounded" ng-src="{{ $ctrl.user.avatar_url }}&s=150"
+          style="width: 150px; height: 150px;">
         <div class="flex-auto flex flex-column justify-center pl2">
-          <h1 class="h2 m0">{{ $ctrl.user.name }}</h1>
-          <h2 class="h3 m0 regular">{{ $ctrl.user.login }}</h2>
+          <h1 class="m0" external-link="{{ $ctrl.user.html_url }}" ng-if="$ctrl.user.name">
+            {{ $ctrl.user.name }}
+          </h1>
+          <h2 class="h3 m0 regular" ng-bind="$ctrl.user.login"></h2>
           <span class="mt1 border-top border-silver"></span>
           <div class="flex mt1">
             <i class="material-icons muted" style="font-size: 18px">access_time</i>
-            <small class="pl1">Joined {{ $ctrl.user.created_at | date: 'y' }}</small>
+            <p class="small m0 pl1">Joined {{ $ctrl.user.created_at | timeAgo }}</p>
           </div>
           <div class="flex mt1" ng-if="$ctrl.user.company.slice(0, 1) === '@'">
             <i class="material-icons muted" style="font-size: 18px">work</i>
-            <small class="pl1"><a class="text-decoration-none" ui-sref="users({ user: $ctrl.user.company.slice(1) })">{{ $ctrl.user.company }}</a></small>
+            <p class="small m0 pl1">
+              <a class="text-decoration-none"
+                ui-sref="users({ user: $ctrl.user.company.slice(1) })"
+                ng-bind="$ctrl.user.company">
+              </a>
+            </p>
           </div>
-          <div class="flex mt1">
+          <div class="flex mt1" ng-if="$ctrl.user.type === 'User'">
             <i class="material-icons muted" style="font-size: 18px">people</i>
-            <small class="pl1">{{ $ctrl.user.followers }} followers</small>
+            <p class="small m0 pl1">{{ $ctrl.user.followers }} followers</p>
           </div>
         </div>
-      </div>
+      </header>
 
       <div ng-if="$ctrl.user.repos.length">
         <h2 class="center m0 py2 bg-blue white">
@@ -37,7 +41,9 @@
         <div class="">
           <div class="p2 border-top border-silver" ng-repeat="repo in $ctrl.user.repos">
             <h5 class="h4 m0">
-              <a class="text-decoration-none" ui-sref="repos({ repo: repo.full_name.replace('/', '::') })" ng-bind="repo.full_name"></a>
+              <a class="text-decoration-none"
+                ui-sref="repos({ repo: repo.full_name.replace('/', '::') })"
+                ng-bind="repo.full_name"></a>
             </h5>
             <p class="m0 muted" ng-if="repo.description" style="line-height: 1">
               <small ng-bind="repo.description"></small>
@@ -51,15 +57,15 @@
               </div>
               <div ng-if="repo.forks_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
                 <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">call_split</i>
-                <span class="pl2 ml1" ng-bind="repo.forks_count"></span>
+                <span class="pl2 ml1" ng-bind="repo.forks_count | number"></span>
               </div>
               <div ng-if="repo.open_issues_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
                 <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">info_outline</i>
-                <span class="pl2 ml1" ng-bind="repo.open_issues_count"></span>
+                <span class="pl2 ml1" ng-bind="repo.open_issues_count | number"></span>
               </div>
               <div ng-if="repo.stargazers_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
                 <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">star_rate</i>
-                <span class="pl2 ml1" ng-bind="repo.stargazers_count"></span>
+                <span class="pl2 ml1" ng-bind="repo.stargazers_count | number"></span>
               </div>
             </div>
           </div>
@@ -70,13 +76,13 @@
           User has no public repositories
         </h2>
       </div>
-
     </div>
 
-    <div ng-if="$ctrl.error.message" class="px2 py4 muted center">
-      <p class="bold">{{ $ctrl.error.message }}</p>
+    <div ng-if="$ctrl.error.message" class="px2 py4">
+      <error message="$ctrl.error.message"></error>
     </div>
-  </div>
+  </section>
 
   <loading ng-if="!$ctrl.user && !$ctrl.error.message"></loading>
+
 </div>

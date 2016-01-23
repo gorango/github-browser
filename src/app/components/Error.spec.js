@@ -19,11 +19,11 @@ describe('Error component', () => {
     expect(error.html().trim()).toEqual('Test error msg.');
   }));
 
-  it('should render use a color when assigned', angular.mock.inject(($rootScope, $compile) => {
+  it('should render a color on form=true', angular.mock.inject(($rootScope, $compile) => {
     const $scope = $rootScope.$new();
     $scope.message = 'Test error msg.';
-    $scope.color = 'red';
-    const element = $compile('<error message="message" color="color"></error>')($scope);
+    $scope.form = true;
+    const element = $compile('<error message="message" form="form"></error>')($scope);
     $scope.$digest();
     const error = element.find('p');
     const errorParent = element.find('div');
