@@ -1,5 +1,5 @@
-import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../constants/Errors';
-import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../constants/SearchFilters.js';
+import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../utils/error.constants';
+import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../utils/search.constants';
 
 class SearchController {
   /** @ngInject */
@@ -39,7 +39,6 @@ class SearchController {
 
     this.error = {};
     let url;
-    // Check if the query is a url by passing it to the native URL constructor.
     try {
       url = new URL(query);
     } catch (e) {

@@ -1,4 +1,4 @@
-import {NO_USER} from '../constants/Errors';
+import {NO_USER} from '../utils/error.constants';
 
 class UserController {
   /** @ngInject */
@@ -16,18 +16,22 @@ class UserController {
           this.error = {message: NO_USER};
         } else {
           this.user = data;
-          this.user.repos = data.repos.sort((a, b) => {
-            if (a.stargazers_count < b.stargazers_count) {
-              return 1;
-            }
-            if (a.stargazers_count > b.stargazers_count) {
-              return -1;
-            }
-            return 0;
-          });
+          this.sort('stargazers_count');
         }
       });
     }, 350);
+  }
+
+  sort(type) {
+    this.user.repos = this.user.repos.sort((a, b) => {
+      if (a[type] < b[type]) {
+        return 1;
+      }
+      if (a[type] > b[type]) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }
 

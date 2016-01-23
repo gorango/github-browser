@@ -1,4 +1,4 @@
-import {API_HOST, SECOND_SEARCH} from '../constants/SearchFilters';
+import {API_HOST, SECOND_SEARCH} from '../utils/search.constants';
 
 export class GitHubService {
   /** @ngInject */

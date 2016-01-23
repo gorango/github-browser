@@ -3,7 +3,10 @@ import 'angular-ui-router';
 import 'angular-animate';
 
 import routesConfig from './routes';
-import {GitHubService} from './app/services/github.js';
+// Utils
+import {GitHubService} from './app/utils/github.service';
+import externalLink from './app/utils/external-link.directive';
+import timeAgo from './app/utils/time.filter';
 // Containers
 import {App} from './app/views/App';
 import {Repo} from './app/views/Repo';
@@ -27,6 +30,8 @@ angular
   .module('app', ['ui.router', 'ngAnimate'])
   .config(routesConfig)
   .service('githubService', GitHubService)
+  .directive('externalLink', externalLink)
+  .filter('timeAgo', timeAgo)
   .component('app', App)
   .component('repo', Repo)
   .component('user', User)

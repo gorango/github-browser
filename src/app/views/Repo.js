@@ -1,4 +1,4 @@
-import {NO_REPO} from '../constants/Errors';
+import {NO_REPO} from '../utils/error.constants';
 
 class RepoController {
   /** @ngInject */
