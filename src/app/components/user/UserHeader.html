@@ -1,0 +1,30 @@
+<div class="p3 flex flex-auto">
+  <img class="rounded" ng-src="{{ $ctrl.user.avatar_url }}&s=150"
+    style="width: 150px; height: 150px;">
+  <div class="flex-auto flex flex-column justify-center pl2">
+    <h1 class="m0" ng-if="$ctrl.user.name">
+      <span external-link="{{ $ctrl.user.html_url }}">
+        {{ $ctrl.user.name }}
+      </span>
+    </h1>
+    <h2 class="h3 m0 regular" ng-bind="$ctrl.user.login"></h2>
+    <span class="mt1 border-top border-silver"></span>
+    <div class="flex mt1">
+      <i class="material-icons muted" style="font-size: 18px">access_time</i>
+      <p class="small m0 pl1">Joined {{ $ctrl.user.created_at | timeAgo }}</p>
+    </div>
+    <div class="flex mt1" ng-if="$ctrl.user.company.slice(0, 1) === '@'">
+      <i class="material-icons muted" style="font-size: 18px">work</i>
+      <p class="small m0 pl1">
+        <a class="text-decoration-none"
+          ui-sref="users({ user: $ctrl.user.company.slice(1) })"
+          ng-bind="$ctrl.user.company">
+        </a>
+      </p>
+    </div>
+    <div class="flex mt1" ng-if="$ctrl.user.type === 'User'">
+      <i class="material-icons muted" style="font-size: 18px">people</i>
+      <p class="small m0 pl1">{{ $ctrl.user.followers }} followers</p>
+    </div>
+  </div>
+</div>

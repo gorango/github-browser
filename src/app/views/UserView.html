@@ -1,0 +1,30 @@
+<div class="max-width-2 mx-auto">
+
+  <logo link="true"></logo>
+
+  <loading ng-if="!$ctrl.user && !$ctrl.error.message"></loading>
+
+  <section ng-if="$ctrl.user || $ctrl.error.message"
+    class="fade-in-up mb4 mt2 bg-white border border-silver overflow-hidden">
+    <div ng-if="$ctrl.user">
+      <header>
+        <user-header user="$ctrl.user"></user-header>
+      </header>
+
+      <div ng-if="$ctrl.user.repos.length">
+        <repos-list repos="$ctrl.user.repos"></repos-list>
+      </div>
+
+      <div ng-if="!$ctrl.user.repos.length">
+        <h2 class="h3 center m0 py2 bg-darken-1 border-top border-bottom border-silver">
+          User has no public repositories
+        </h2>
+      </div>
+    </div>
+
+    <div ng-if="$ctrl.error.message" class="px2 py4">
+      <error message="$ctrl.error.message"></error>
+    </div>
+  </section>
+
+</div>

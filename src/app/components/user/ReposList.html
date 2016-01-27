@@ -1,0 +1,14 @@
+<h2 class="center m0 py2 bg-blue white">
+  Public Repositories <small class="muted">({{ $ctrl.repos.length }})</small>
+</h2>
+<div class="bg-darken-1 p2 center small border-top border-silver flex items-center">
+  <h5 class="m0 sm-col-2 muted xs-hide">Sort by:</h5>
+  <div class="repo-sort sm-col-2 flex-auto"
+    ng-repeat="item in $ctrl.sortList"
+    ng-class="{active: item.value === $ctrl.active, reverse: $ctrl.reverse}">
+    <a class="p1 relative" ng-click="$ctrl.sortBy(item.value)" ng-bind="item.label"></a>
+  </div>
+</div>
+<div class="p2 border-top border-silver relative" ng-repeat="repo in $ctrl.repos">
+  <repo-item repo="repo"></repo-item>
+</div>

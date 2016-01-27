@@ -1,0 +1,26 @@
+<p class="m0 small muted right">Updated {{ $ctrl.repo.updated_at | timeAgo }}</p>
+<h5 class="h4 m0">
+  <a class="text-decoration-none"
+    ui-sref="repos({ repo: $ctrl.repo.full_name.replace('/', '::') })"
+    ng-bind="$ctrl.repo.full_name"></a>
+</h5>
+<div class="flex mt1">
+  <div class="flex-auto relative flex items-center">
+    <span ng-if="$ctrl.repo.language" class="flex items-center">
+      <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">code</i>
+      <span class="pl2 ml1" ng-bind="$ctrl.repo.language"></span>
+    </span>
+  </div>
+  <div ng-if="$ctrl.repo.forks_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+    <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">call_split</i>
+    <span class="pl2 ml1" ng-bind="$ctrl.repo.forks_count | number"></span>
+  </div>
+  <div ng-if="$ctrl.repo.open_issues_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+    <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">info_outline</i>
+    <span class="pl2 ml1" ng-bind="$ctrl.repo.open_issues_count | number"></span>
+  </div>
+  <div ng-if="$ctrl.repo.stargazers_count > 0" class="relative flex items-center ml2" style="min-width: 30px;">
+    <i class="muted material-icons absolute left-0 muted" style="font-size: 18px; top: 2px;">star_rate</i>
+    <span class="pl2 ml1" ng-bind="$ctrl.repo.stargazers_count | number"></span>
+  </div>
+</div>

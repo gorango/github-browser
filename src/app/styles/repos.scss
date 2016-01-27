@@ -1,0 +1,30 @@
+.repo-sort {
+  a { cursor: pointer }
+
+  &.active {
+    a { font-weight: bold }
+
+    a::after {
+      color: #0074d9;
+      display: block;
+      font-family: 'Material Icons';
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      left: 50%;
+      line-height: 0;
+      position: absolute;
+      transform: translate(-50%, 0);
+    }
+
+    &:not(.reverse) a::after {
+      content: '\e5c5';
+      bottom: 4px;
+    }
+
+    &.reverse a::after {
+      content: '\e5c7';
+      top: 4px;
+    }
+  }
+}
