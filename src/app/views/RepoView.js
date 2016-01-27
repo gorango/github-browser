@@ -1,6 +1,6 @@
 import {NO_REPO} from '../utils/error.constants';
 
-class RepoController {
+class RepoViewController {
   /** @ngInject */
   constructor($state, $timeout, $stateParams, githubService) {
     this.$state = $state;
@@ -10,14 +10,14 @@ class RepoController {
 
     const repo = $stateParams.repo.replace('::', '/');
 
-    if (!repo) {
-      return this.$state.go('app');
-    }
-
     this.init(repo);
   }
 
   init(repo) {
+    if (!repo) {
+      return this.$state.go('app');
+    }
+
     this.github.getResource('repos', repo).then(data => {
       // Using timeout to postpone loading and display spinner
       this.$timeout(() => {
@@ -31,7 +31,7 @@ class RepoController {
   }
 }
 
-export const Repo = {
-  template: require('./Repo.html'),
-  controller: RepoController
+export const RepoView = {
+  template: require('./RepoView.html'),
+  controller: RepoViewController
 };

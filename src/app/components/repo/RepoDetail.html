@@ -1,0 +1,18 @@
+<div ng-if="$ctrl.repo.description.length">
+  <p class="m0 center">{{ $ctrl.repo.description }}</p>
+  <hr class="my1">
+</div>
+<div class="sm-flex">
+  <div class="col-12 sm-col-6 flex flex-wrap">
+    <p class="m0 small col-6 right-align pr1">Created:</p>
+    <p class="m0 small col-6" ng-bind="$ctrl.repo.created_at | timeAgo"></p>
+    <p class="m0 small col-6 right-align pr1">Updated:</p>
+    <p class="m0 small col-6" ng-bind="$ctrl.repo.updated_at | timeAgo"></p>
+  </div>
+  <div class="col-12 sm-col-6 flex flex-wrap">
+    <p class="m0 small col-6 right-align pr1">Stars:</p>
+    <p class="m0 small col-6" ng-bind="$ctrl.repo.stargazers_count | number"></p>
+    <p class="m0 small col-6 right-align pr1">Issues:</p>
+    <p class="m0 small col-6" ng-bind="$ctrl.repo.open_issues | number"></p>
+  </div>
+</div>

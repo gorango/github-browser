@@ -1,0 +1,17 @@
+<h2 class="h1 m0 regular inline-block">
+  <a class="text-decoration-none"
+    ui-sref="users({ user: $ctrl.repo.owner.login })">
+    {{ $ctrl.repo.owner.login }}
+  </a>
+</h2>
+<span class="h1 m0 inline-block">/</span>
+<h1 class="m0 inline-block" external-link="{{$ctrl.repo.html_url}}">
+  {{ $ctrl.repo.name }}
+</h1>
+<p class="m0 small" ng-if="$ctrl.repo.homepage.length">
+  <a href="{{ $ctrl.repo.homepage }}"
+    target="_blank"
+    class="text-decoration-none"
+    ng-bind="$ctrl.repo.homepage">
+  </a>
+</p>

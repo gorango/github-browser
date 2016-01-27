@@ -1,5 +1,5 @@
-import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../utils/error.constants';
-import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../utils/search.constants';
+import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../../utils/error.constants';
+import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../../utils/search.constants';
 
 class SearchController {
   /** @ngInject */

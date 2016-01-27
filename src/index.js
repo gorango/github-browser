@@ -3,26 +3,37 @@ import 'angular-ui-router';
 import 'angular-animate';
 
 import routesConfig from './routes';
-// Utils
+
+// VIEWS
+import {AppView} from './app/views/AppView';
+import {RepoView} from './app/views/RepoView';
+
+// COMPONENTS
+//  - Common components
+import {Error} from './app/components/common/Error';
+import {Loading} from './app/components/common/Loading';
+import {Logo} from './app/components/common/Logo';
+import {Search} from './app/components/common/Search';
+//  - RepoView components
+import {ContributorItem} from './app/components/repo/ContributorItem';
+import {ContributorsList} from './app/components/repo/ContributorsList';
+import {RepoDetail} from './app/components/repo/RepoDetail';
+import {RepoHeader} from './app/components/repo/RepoHeader';
+
+// UTILS
 import {GitHubService} from './app/utils/github.service';
 import externalLink from './app/utils/external-link.directive';
 import timeAgo from './app/utils/time.filter';
-// Containers
-import {App} from './app/views/App';
-import {Repo} from './app/views/Repo';
 import {User} from './app/views/User';
-// Components
-import {Error} from './app/components/Error';
-import {Loading} from './app/components/Loading';
-import {Logo} from './app/components/Logo';
-import {Search} from './app/components/Search';
-// General styles
+
+// STYLES
+//  - Shared styles
 import 'ace-css/css/ace.css';
 import './index.scss';
 import './app/styles/animate.scss';
 import './app/styles/button.scss';
 import './app/styles/form.scss';
-// Component styles
+//  - Component styles
 import './app/styles/loading.scss';
 import './app/styles/logo.scss';
 import './app/styles/search.scss';
@@ -33,10 +44,14 @@ angular
   .service('githubService', GitHubService)
   .directive('externalLink', externalLink)
   .filter('timeAgo', timeAgo)
-  .component('app', App)
-  .component('repo', Repo)
-  .component('user', User)
+  .component('app', AppView)
+  .component('repo', RepoView)
+  .component('user', UserView)
+  .component('contributorItem', ContributorItem)
+  .component('contributorsList', ContributorsList)
   .component('error', Error)
   .component('loading', Loading)
   .component('logo', Logo)
-  .component('search', Search);
+  .component('repoDetail', RepoDetail)
+  .component('repoHeader', RepoHeader)
+  .component('search', Search)

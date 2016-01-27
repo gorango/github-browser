@@ -1,0 +1,13 @@
+<div class="flex">
+  <a ui-sref="users({ user: $ctrl.contributor.login })">
+    <img ng-src="{{ $ctrl.contributor.avatar_url }}&s=40" style="width: 40px; height: 40px;">
+  </a>
+  <div class="ml2">
+    <h5 class="h3 m0 regular">
+      <a class="text-decoration-none"
+      ui-sref="users({ user: $ctrl.contributor.login })"
+      ng-bind="$ctrl.contributor.login"></a>
+    </h5>
+    <p class="m0 muted small">{{ $ctrl.contributor.contributions | number }} commits</p>
+  </div>
+</div>

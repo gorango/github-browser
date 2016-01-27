@@ -1,0 +1,10 @@
+<h2 class="center m0 py2 bg-blue white border-top border-bottom border-silver">
+  Contributors
+  <small class="muted">({{ $ctrl.contributors.length }})</small>
+</h2>
+<div class="flex flex-wrap p3">
+  <div class="col-12 sm-col-6 mb2"
+    ng-repeat="contributor in $ctrl.contributors">
+    <contributor-item contributor="contributor"></contributor-item>
+  </div>
+</div>

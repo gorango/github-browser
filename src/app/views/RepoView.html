@@ -1,0 +1,30 @@
+<div class="max-width-2 mx-auto">
+
+  <logo link="true"></logo>
+
+  <loading ng-if="!$ctrl.repo && !$ctrl.error.message"></loading>
+
+  <section ng-if="$ctrl.repo || $ctrl.error.message"
+    class="fade-in-up mb4 mt2 bg-white border border-silver overflow-hidden">
+    <div ng-if="$ctrl.repo">
+      <header class="py2 px3 center border-bottom border-silver">
+        <repo-header repo="$ctrl.repo"></repo-header>
+      </header>
+
+      <div class="py2 px3 bg-darken-1">
+        <repo-detail repo="$ctrl.repo"></repo-detail>
+      </div>
+
+      <div ng-if="$ctrl.repo.contributors" class="">
+        <contributors-list contributors="$ctrl.repo.contributors"></contributors-list>
+      </div>
+    </div>
+
+    <div ng-if="$ctrl.error.message" class="px2 py4">
+      <error message="$ctrl.error.message"></error>
+      <div class="mb4"></div>
+      <search></search>
+    </div>
+  </section>
+
+</div>
