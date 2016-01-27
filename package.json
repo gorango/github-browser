@@ -15,7 +15,6 @@
     "test:auto": "gulp test:auto"
   },
   "dependencies": {
-    "ace-css": "^1.1.0",
     "angular": "^1.5.0",
     "angular-animate": "^1.6.0",
     "angular-ui-router": "1.0.0-beta.1"
@@ -25,6 +24,7 @@
     "@types/angular-mocks": "^1.5.5",
     "@types/angular-ui-router": "^1.1.34",
     "@types/jquery": "^2.0.33",
+    "ace-css": "^1.1.0",
     "angular-mocks": "^1.5.0-beta.2",
     "autoprefixer": "^6.2.2",
     "babel-core": "^6.13.0",
