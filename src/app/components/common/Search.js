@@ -1,5 +1,8 @@
 import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../../utils/error.constants';
-import {ALLOWED_HOST, REPO_PATH, TRAILING_SLASH} from '../../utils/search.constants';
+
+const ALLOWED_HOST = 'github.com';
+const REPO_PATH = /[^/]+\/([^/]+$)/;
+const TRAILING_SLASH = /\/$/;
 
 class SearchController {
   /** @ngInject */
@@ -11,6 +14,9 @@ class SearchController {
     this.error = this.error || {};
     this.example = 'https://github.com/angular/angular';
     this.placeholder = 'angular/angular';
+  }
+
+  $onInit() {
     this.focus();
   }
 
@@ -33,37 +39,43 @@ class SearchController {
   }
 
   search(query) {
-    if (!query) {
-      return this.throwError(NO_QUERY);
-    }
+    return new Promise((reject, resolve) => {
+      if (!query) {
+        this.throwError(NO_QUERY);
+        reject(NO_QUERY);
+      }
 
-    this.error = {};
-    let url;
-    try {
-      url = new URL(query);
-    } catch (e) {
-      // If the query is not a url, we can assume it's a path
-      // and continue to the end
-    } finally {
-      if (url) {
-        if (url.host === ALLOWED_HOST) {
-          query = url.pathname;
-        } else {
-          return this.throwError(GITHUB_ONLY);
+      this.error = {};
+      let url;
+      try {
+        url = new URL(query);
+      } catch (e) {
+        // If the query is not a url, we can assume it's a path
+        // and continue to the end
+      } finally {
+        if (url) {
+          if (url.host === ALLOWED_HOST) {
+            query = url.pathname;
+          } else {
+            this.throwError(GITHUB_ONLY);
+            reject(GITHUB_ONLY);
+          }
         }
       }
-    }
 
-    let repo = query.replace(TRAILING_SLASH, '').match(REPO_PATH);
+      let repo = query.replace(TRAILING_SLASH, '').match(REPO_PATH);
 
-    if (repo) {
-      // Replacing the forward-slash to avoid ugly reformatting in the url
-      const prettyPath = repo[0].replace('/', '::');
-      repo = prettyPath;
-      this.$state.go('repos', {repo});
-    } else {
-      return this.throwError(BAD_QUERY);
-    }
+      if (repo) {
+        // Replacing the forward-slash to avoid ugly reformatting in the url
+        const prettyPath = repo[0].replace('/', '::');
+        repo = prettyPath;
+        resolve(repo);
+        this.$state.go('repos', {repo});
+      } else {
+        this.throwError(BAD_QUERY);
+        reject(BAD_QUERY);
+      }
+    });
   }
 }
 

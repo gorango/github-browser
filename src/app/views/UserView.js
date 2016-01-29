@@ -2,10 +2,9 @@ import {NO_USER} from '../utils/error.constants';
 
 class UserViewController {
   /** @ngInject */
-  constructor($timeout, $stateParams, githubService, $log) {
+  constructor($timeout, $stateParams, githubService) {
     this.$timeout = $timeout;
     this.github = githubService;
-    this.console = $log;
     this.init($stateParams.user);
   }
 

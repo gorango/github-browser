@@ -5,7 +5,7 @@ import {Error} from './Error';
 describe('Error component', () => {
   beforeEach(() => {
     angular
-      .module('error', ['app/components/Error.html'])
+      .module('error', ['app/components/common/Error.html'])
       .component('error', Error);
     angular.mock.module('error');
   });
@@ -19,7 +19,7 @@ describe('Error component', () => {
     expect(error.html().trim()).toEqual('Test error msg.');
   }));
 
-  it('should render a color on form=true', angular.mock.inject(($rootScope, $compile) => {
+  it('should render a color on form prop', angular.mock.inject(($rootScope, $compile) => {
     const $scope = $rootScope.$new();
     $scope.message = 'Test error msg.';
     $scope.form = true;

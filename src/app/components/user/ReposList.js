@@ -1,6 +1,9 @@
 class ReposListController {
   /* @ngInject */
   constructor() {
+    this.active = '';
+    this.reverse = false;
+    this.repos = [];
     this.sortList = [{
       value: 'language',
       label: 'Lang'

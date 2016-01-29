@@ -7,9 +7,8 @@ class RepoViewController {
     this.$timeout = $timeout;
     this.github = githubService;
     this.error = {};
-
-    const repo = $stateParams.repo.replace('::', '/');
-
+    this.repo = {};
+    const repo = $stateParams.repo ? $stateParams.repo.replace('::', '/') : '';
     this.init(repo);
   }
 
