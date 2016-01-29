@@ -1,4 +1,8 @@
-import {API_HOST, SECOND_SEARCH} from '../utils/search.constants';
+const API_HOST = 'https://api.github.com/';
+const SECOND_SEARCH = {
+  repos: 'contributors',
+  users: 'repos'
+};
 
 export class GitHubService {
   /** @ngInject */
