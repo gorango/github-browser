@@ -9,7 +9,7 @@
 yarn # or npm i
 
 # serve with hot reload at localhost:3000
-yarn run serve
+yarn run dev
 
 # build for production with minification and autoprefix
 yarn run build
@@ -18,4 +18,10 @@ yarn run build
 yarn test
 ```
 
-(you can use `npm` instead of `yarn`)
+## Test Coverage
+
+Executing `yarn test` creates a folder `./coverage/PhantomJS<v>(<os>)` with test results you can view by opening `index.html` in a browser.
+
+#### Latest results overview
+
+![](https://s3.amazonaws.com/gorango/maxmind/coverage.gif)

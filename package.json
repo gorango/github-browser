@@ -9,8 +9,8 @@
   "author": "Goran <gospaso@gmail.com>",
   "scripts": {
     "build": "gulp",
-    "serve": "gulp serve",
-    "serve:dist": "gulp serve:dist",
+    "dev": "gulp serve",
+    "prod": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto"
   },
