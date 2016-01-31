@@ -104,6 +104,7 @@ describe('Search component', () => {
       expect(component.throwError).not.toHaveBeenCalled();
       component.search('http://example.com/foo/bar');
       expect(component.throwError).toHaveBeenCalledWith(GITHUB_ONLY);
+      expect($state.go).not.toHaveBeenCalled();
     });
 
     it('should accept "user/repo" query', () => {

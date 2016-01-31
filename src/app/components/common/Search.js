@@ -3,6 +3,22 @@ import {NO_QUERY, GITHUB_ONLY, BAD_QUERY} from '../../utils/error.constants';
 const ALLOWED_HOST = 'github.com';
 const REPO_PATH = /[^/]+\/([^/]+$)/;
 const TRAILING_SLASH = /\/$/;
+const RE_URL = new RegExp([
+  '^(https?:)//', // protocol
+  '(([^:/?#]*)(?::([0-9]+))?)', // host (hostname and port)
+  '(/{0,1}[^?#]*)' // pathname
+].join(''));
+
+function getURL(href) {
+  const match = href.match(RE_URL);
+  return match && {
+    protocol: match[1],
+    host: match[2],
+    hostname: match[3],
+    port: match[4],
+    pathname: match[5]
+  };
+}
 
 class SearchController {
   /** @ngInject */
@@ -23,9 +39,7 @@ class SearchController {
   focus() {
     this.$timeout(() => {
       const element = this.$window.document.querySelector('.searchbar input');
-      if (element) {
-        element.focus();
-      }
+      return element && element.focus();
     }, 0);
   }
 
@@ -39,27 +53,15 @@ class SearchController {
   }
 
   search(query) {
-    return new Promise((resolve, reject) => {
-      if (!query) {
-        this.throwError(NO_QUERY);
-        reject(NO_QUERY);
-      }
-
+    if (query) {
       this.error = {};
-      let url;
-      try {
-        url = new URL(query);
-      } catch (e) {
-        // If the query is not a url, we can assume it's a path
-        // and continue to the end
-      } finally {
-        if (url) {
-          if (url.host === ALLOWED_HOST) {
-            query = url.pathname;
-          } else {
-            this.throwError(GITHUB_ONLY);
-            reject(GITHUB_ONLY);
-          }
+      const url = getURL(query);
+
+      if (url) {
+        if (url.host === ALLOWED_HOST) {
+          query = url.pathname;
+        } else {
+          return this.throwError(GITHUB_ONLY);
         }
       }
 
@@ -69,13 +71,15 @@ class SearchController {
         // Replacing the forward-slash to avoid ugly reformatting in the url
         const prettyPath = repo[0].replace('/', '::');
         repo = prettyPath;
-        this.$state.go('repos', {repo});
-        resolve(repo);
+        this.$state.go('repos', {
+          repo
+        });
       } else {
-        this.throwError(BAD_QUERY);
-        reject(BAD_QUERY);
+        return this.throwError(BAD_QUERY);
       }
-    });
+    } else {
+      return this.throwError(NO_QUERY);
+    }
   }
 }
 
