@@ -20,8 +20,6 @@ yarn test
 
 ## Test Coverage
 
-> 99.6% of the code base is now fully covered by unit tests.
+> 100% of the code base is covered by unit tests: https://gorango.github.io/maxmind-ng-frontend/.
 
-You can view the most recent coverage results here: https://gorango.github.io/maxmind-ng-frontend/.
-
-Alternatively, executing `yarn test` creates a `coverage` folder that you can navigate by opening the `index.html` file in a browser.
+Executing `yarn test` creates a `./coverage` folder with the same results.
