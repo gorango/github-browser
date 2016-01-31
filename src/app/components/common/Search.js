@@ -39,7 +39,7 @@ class SearchController {
   }
 
   search(query) {
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
       if (!query) {
         this.throwError(NO_QUERY);
         reject(NO_QUERY);
@@ -69,8 +69,8 @@ class SearchController {
         // Replacing the forward-slash to avoid ugly reformatting in the url
         const prettyPath = repo[0].replace('/', '::');
         repo = prettyPath;
-        resolve(repo);
         this.$state.go('repos', {repo});
+        resolve(repo);
       } else {
         this.throwError(BAD_QUERY);
         reject(BAD_QUERY);

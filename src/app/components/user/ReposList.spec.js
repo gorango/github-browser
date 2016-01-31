@@ -14,12 +14,17 @@ describe('ReposList component', () => {
   }, {
     full_name: 'Second Repo',
     language: 'SooBar',
-    updated_at: new Date(new Date().valueOf() - 1000 * 60 * 2),
+    updated_at: new Date(new Date().valueOf() - 1000 * 60 * 5),
     stargazers_count: 2
   }, {
     full_name: 'Third Repo',
-    language: 'TooBar',
-    updated_at: new Date(new Date().valueOf() - 1000 * 60 * 5),
+    language: 'SooBar',
+    updated_at: new Date(new Date().valueOf() - 1000 * 60 * 4),
+    stargazers_count: 2
+  }, {
+    full_name: 'Fourth Repo',
+    language: '',
+    updated_at: new Date(new Date().valueOf() - 1000 * 60 * 4),
     stargazers_count: 3
   }];
   /* eslint-enable camelcase */
@@ -42,7 +47,7 @@ describe('ReposList component', () => {
     $scope.repos = repos;
     const element = $compile('<repos-list repos="repos"></repos-list>')($scope);
     $scope.$digest();
-    expect(element.find('repo-item').length).toEqual(3);
+    expect(element.find('repo-item').length).toEqual(4);
   }));
 
   it('should sort on initialization', () => {
@@ -68,7 +73,7 @@ describe('ReposList component', () => {
     const prop = 'language';
     component.sortBy(prop);
     expect(component.active).toEqual(prop);
-    expect(component.repos[0][prop]).toEqual(repos[2][prop]);
+    expect(component.repos[0][prop]).toEqual(repos[3][prop]);
     component.sortBy(prop);
     expect(component.repos[0][prop]).toEqual(repos[0][prop]);
   });
@@ -77,8 +82,8 @@ describe('ReposList component', () => {
     const prop = 'updated_at';
     component.sortBy(prop);
     expect(component.active).toEqual(prop);
-    expect(component.repos[0][prop]).toEqual(repos[2][prop]);
+    expect(component.repos[0][prop]).toEqual(repos[3][prop]);
     component.sortBy(prop);
-    expect(component.repos[0][prop]).toEqual(repos[0][prop]);
+    expect(component.repos[0][prop]).toEqual(repos[1][prop]);
   });
 });

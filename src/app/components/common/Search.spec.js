@@ -8,29 +8,24 @@ describe('Search component', () => {
   beforeEach(() => {
     angular.mock.module('ui.router');
     angular.module('search', ['ui.router'])
-      .config($stateProvider => {
-        $stateProvider
-          .state('search', {
-            url: '/',
-            component: 'search'
-          });
-      })
       .component('search', Search);
     angular.mock.module('search');
   });
 
   describe('Form functions', () => {
     let $scope;
+    let $timeout;
     let element;
     let input;
     let component;
 
     beforeEach(() => {
-      angular.mock.inject(($rootScope, $compile, $componentController) => {
+      angular.mock.inject(($rootScope, $compile, $componentController, _$timeout_) => {
+        $timeout = _$timeout_;
         $scope = $rootScope.$new();
         element = $compile('<search></search>')($scope);
         input = element.find('input');
-        component = $componentController('search', {});
+        component = $componentController('search', {$scope, $timeout});
       });
     });
 
@@ -48,7 +43,15 @@ describe('Search component', () => {
       expect(component.query).toEqual(component.example);
     });
 
-    it('should focus input on example query', () => {
+    it('should focus cursor on input', () => {
+      spyOn(component, 'focus');
+      component.$onInit();
+      $timeout.flush();
+      $scope.$digest();
+      expect(component.focus).toHaveBeenCalled();
+    });
+
+    it('should focus after example query', () => {
       spyOn(component, 'focus');
       expect(component.focus).not.toHaveBeenCalled();
       component.tryExample();
@@ -72,7 +75,6 @@ describe('Search component', () => {
       angular.mock.inject(($rootScope, $compile, $componentController) => {
         $scope = $rootScope.$new();
         component = $componentController('search', {$scope});
-        spyOn(component, 'throwError');
       });
     });
 
@@ -83,7 +85,8 @@ describe('Search component', () => {
       });
     });
 
-    it('should throw error without query', () => {
+    it('should throw error if no query', () => {
+      spyOn(component, 'throwError');
       expect(component.throwError).not.toHaveBeenCalled();
       component.search('');
       expect(component.throwError).toHaveBeenCalledWith(NO_QUERY);
@@ -91,13 +94,13 @@ describe('Search component', () => {
     });
 
     it('should accept github urls', () => {
-      component.search('https://github.com/foo/bar')
-        .then(repo => {
-          expect($state.go).toHaveBeenCalledWith({repo});
-        });
+      component.search('https://github.com/foo/bar');
+      $scope.$digest();
+      expect($state.go).toHaveBeenCalledWith('repos', {repo: 'foo::bar'});
     });
 
     it('should deny non-github urls', () => {
+      spyOn(component, 'throwError');
       expect(component.throwError).not.toHaveBeenCalled();
       component.search('http://example.com/foo/bar');
       expect(component.throwError).toHaveBeenCalledWith(GITHUB_ONLY);
@@ -105,10 +108,11 @@ describe('Search component', () => {
 
     it('should accept "user/repo" query', () => {
       component.search('foo/bar');
-      expect($state.go).toHaveBeenCalled();
+      expect($state.go).toHaveBeenCalledWith('repos', {repo: 'foo::bar'});
     });
 
     it('should deny bad format in query', () => {
+      spyOn(component, 'throwError');
       expect(component.throwError).not.toHaveBeenCalled();
       component.search('foobar');
       expect(component.throwError).toHaveBeenCalledWith(BAD_QUERY);
