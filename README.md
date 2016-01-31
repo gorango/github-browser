@@ -20,8 +20,8 @@ yarn test
 
 ## Test Coverage
 
-Executing `yarn test` creates a folder `./coverage/PhantomJS<v>(<os>)` with test results you can view by opening `index.html` in a browser.
+> 99.6% of the code base is now fully covered by unit tests.
 
-#### Latest results overview
+You can view the most recent coverage results here: https://gorango.github.io/maxmind-ng-frontend/.
 
-![](https://s3.amazonaws.com/gorango/maxmind/coverage.gif)
+Alternatively, executing `yarn test` creates a `coverage` folder that you can navigate by opening the `index.html` file in a browser.
