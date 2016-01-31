@@ -11,20 +11,22 @@ export class GitHubService {
   }
 
   getResource(type, value) {
-    const firstUrl = `${API_HOST}${type}/${value}`;
+    const url = `${API_HOST}${type}/${value}`;
+    let result;
+    let prop;
 
-    return this.http.get(firstUrl).then(res => {
-      if (res.status === 200) {
-        const result = res.data;
-        const prop = SECOND_SEARCH[type];
-        const secondUrl = result[`${prop}_url`];
-
-        return this.http.get(secondUrl).then(res => {
-          result[prop] = res.data;
-          return result;
-        });
-      }
-      return res;
-    }, err => err);
+    return this.http.get(url)
+      .then(res => {
+        result = res.data;
+        prop = SECOND_SEARCH[type];
+        return result[`${prop}_url`];
+      })
+      .then(url => {
+        return this.http.get(url);
+      })
+      .then(res => {
+        result[prop] = res.data;
+        return result;
+      });
   }
 }
