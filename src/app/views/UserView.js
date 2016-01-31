@@ -2,23 +2,32 @@ import {NO_USER} from '../utils/error.constants';
 
 class UserViewController {
   /** @ngInject */
-  constructor($timeout, $stateParams, githubService) {
+  constructor($state, $timeout, $stateParams, githubService) {
+    this.$state = $state;
     this.$timeout = $timeout;
     this.github = githubService;
-    this.init($stateParams.user);
+    this.error = undefined;
+    this.user = undefined;
+    this.query = $stateParams.user || '';
   }
 
-  init(user) {
-    // Using timeout to postpone loading and display spinner
-    this.$timeout(() => {
-      this.github.getResource('users', user).then(data => {
-        if (data.status > 400) {
-          this.error = {message: NO_USER};
-        } else {
-          this.user = data;
-        }
-      });
-    }, 350);
+  $onInit() {
+    this.init(this.query);
+  }
+
+  init(query) {
+    if (!query) {
+      return this.$state.go('app');
+    }
+
+    this.github.getResource('users', query).then(res => {
+      // Using timeout to postpone loading and display spinner
+      this.$timeout(() => {
+        this.user = res;
+      }, 350);
+    }, () => {
+      this.error = {message: NO_USER};
+    });
   }
 }
 

@@ -6,26 +6,27 @@ class RepoViewController {
     this.$state = $state;
     this.$timeout = $timeout;
     this.github = githubService;
-    this.error = {};
-    this.repo = {};
-    const repo = $stateParams.repo ? $stateParams.repo.replace('::', '/') : '';
-    this.init(repo);
+    this.error = undefined;
+    this.repo = undefined;
+    this.query = $stateParams.repo ? $stateParams.repo.replace('::', '/') : '';
   }
 
-  init(repo) {
-    if (!repo) {
+  $onInit() {
+    this.init(this.query);
+  }
+
+  init(query) {
+    if (!query) {
       return this.$state.go('app');
     }
 
-    this.github.getResource('repos', repo).then(data => {
+    this.github.getResource('repos', query).then(res => {
       // Using timeout to postpone loading and display spinner
       this.$timeout(() => {
-        if (data.status > 400) {
-          this.error = {message: NO_REPO};
-        } else {
-          this.repo = data;
-        }
+        this.repo = res;
       }, 350);
+    }, () => {
+      this.error = {message: NO_REPO};
     });
   }
 }
