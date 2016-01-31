@@ -1,33 +1,14 @@
-import {NO_REPO} from '../utils/error.constants';
+import {PageViewController} from './PageView';
 
-class RepoViewController {
+class RepoViewController extends PageViewController {
   /** @ngInject */
-  constructor($state, $timeout, $stateParams, githubService) {
-    this.$state = $state;
-    this.$timeout = $timeout;
-    this.github = githubService;
-    this.error = undefined;
-    this.repo = undefined;
+  constructor($timeout, $state, $stateParams, githubService) {
+    super($timeout, $state, githubService);
     this.query = $stateParams.repo ? $stateParams.repo.replace('::', '/') : '';
   }
 
   $onInit() {
-    this.init(this.query);
-  }
-
-  init(query) {
-    if (!query) {
-      return this.$state.go('app');
-    }
-
-    this.github.getResource('repos', query).then(res => {
-      // Using timeout to postpone loading and display spinner
-      this.$timeout(() => {
-        this.repo = res;
-      }, 350);
-    }, () => {
-      this.error = {message: NO_REPO};
-    });
+    this.initView(this.query, 'repo');
   }
 }
 
