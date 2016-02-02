@@ -1,6 +1,6 @@
-import {PageViewController} from './PageView';
+import {PageViewAbstract} from './PageView';
 
-class UserViewController extends PageViewController {
+class UserViewController extends PageViewAbstract {
   /** @ngInject */
   constructor($timeout, $state, $stateParams, githubService) {
     super($timeout, $state, githubService);
@@ -8,7 +8,7 @@ class UserViewController extends PageViewController {
   }
 
   $onInit() {
-    this.initView(this.query, 'user');
+    this.initView('users', this.query);
   }
 }
 

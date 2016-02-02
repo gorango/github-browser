@@ -1,31 +1,42 @@
 import {NO_REPO, NO_USER} from '../utils/error.constants';
 
 const ERROR_MSG = {
-  repo: NO_REPO,
-  user: NO_USER
+  repos: NO_REPO,
+  users: NO_USER
 };
 
-export class PageViewController {
+/**
+ * This class is indended to be extended by RepoView and UserView components.
+ * Here we abstract the duplicate operations required to query the db.
+ *
+ * Note the lack of `@ngInject` above the contructor.
+ * Angular injection needs to be carried out in the child constructor.
+ */
+export class PageViewAbstract {
   constructor($timeout, $state, githubService) {
+    if (this.constructor === PageViewAbstract) {
+      throw new TypeError("Cannot construct PageViewAbstract instances directly");
+    }
+
     this.$state = $state;
     this.$timeout = $timeout;
     this.github = githubService;
   }
 
-  initView(query, page) {
+  initView(page, query) {
     if (!query) {
       return this.$state.go('app');
     }
 
     return this.$timeout(() => {
-      return this.github.getResource(`${page}s`, query)
+      return this.github.getResource(page, query)
         .then(
           res => {
             return {
-              repo: () => {
+              repos: () => {
                 this.repo = res;
               },
-              user: () => {
+              users: () => {
                 this.user = res;
               }
             }[page]();

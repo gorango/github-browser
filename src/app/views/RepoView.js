@@ -1,6 +1,6 @@
-import {PageViewController} from './PageView';
+import {PageViewAbstract} from './PageView';
 
-class RepoViewController extends PageViewController {
+class RepoViewController extends PageViewAbstract {
   /** @ngInject */
   constructor($timeout, $state, $stateParams, githubService) {
     super($timeout, $state, githubService);
@@ -8,7 +8,7 @@ class RepoViewController extends PageViewController {
   }
 
   $onInit() {
-    this.initView(this.query, 'repo');
+    this.initView('repos', this.query);
   }
 }
 
