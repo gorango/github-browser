@@ -21,9 +21,7 @@ export class GitHubService {
         prop = SECOND_SEARCH[type];
         return result[`${prop}_url`];
       })
-      .then(url => {
-        return this.http.get(url);
-      })
+      .then(url => this.http.get(url))
       .then(res => {
         result[prop] = res.data;
         return result;

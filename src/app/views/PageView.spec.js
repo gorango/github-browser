@@ -20,7 +20,6 @@ describe('PageView component', () => {
     angular.mock.module('ui.router');
     angular.module('repoView', ['ui.router'])
       .service('githubService', GitHubService)
-      .component('pageView', PageViewAbstract)
       .component('repoView', RepoView)
       .component('userView', UserView);
     angular.mock.module('repoView');

@@ -71,9 +71,7 @@ class SearchController {
         // Replacing the forward-slash to avoid ugly reformatting in the url
         const prettyPath = repo[0].replace('/', '::');
         repo = prettyPath;
-        this.$state.go('repos', {
-          repo
-        });
+        this.$state.go('repos', {repo});
       } else {
         return this.throwError(BAD_QUERY);
       }

@@ -26,9 +26,7 @@ import {ReposList} from './app/components/user/ReposList';
 import {UserHeader} from './app/components/user/UserHeader';
 
 // UTILS
-import {GitHubService} from './app/utils/github.service';
-import externalLink from './app/utils/external-link.directive';
-import timeAgo from './app/utils/time.filter';
+import {GitHubService, externalLink, timeAgo} from './app/utils';
 
 // STYLES
 //  - Shared styles
