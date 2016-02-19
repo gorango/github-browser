@@ -1,6 +1,4 @@
-# maxmind/dev-hire-homework
-
-> Simple GitHub API browser demo based on [these specs](https://github.com/maxmind/dev-hire-homework/tree/frontend-version).
+> Simple GitHub API browser demo built with Angular 1.5 using ES6.
 
 ## Build Setup
 
@@ -20,6 +18,6 @@ yarn test
 
 ## Test Coverage
 
-> 100% of the code base is covered by unit tests: https://gorango.github.io/maxmind-ng-frontend/.
+> 100% of the code base is covered by unit tests: https://gorango.github.io/github-browser/.
 
 Executing `yarn test` creates a `./coverage` folder with the same results.
