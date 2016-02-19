@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/app/views/PageView.spec.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/app/views/</a> PageView.spec.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>102/102</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>102/102</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import angular from 'angular';
+import 'angular-mocks';
+import 'angular-ui-router';
+import {PageViewAbstract} from './PageView';
+import {RepoView} from './RepoView';
+import {UserView} from './UserView';
+import {GitHubService} from '../utils/github.service';
+import {MOCK_REPOS, MOCK_CONTRIBUTORS, MOCK_USER, MOCK_USER_REPOS} from '../utils/github.service.mocks';
+import {NO_REPO, NO_USER} from '../utils/error.constants';
+&nbsp;
+describe('PageView component', () =&gt; {
+  let $scope;
+  let $rootScope;
+  let $state;
+  let $timeout;
+  let $stateParams;
+  let githubService;
+&nbsp;
+  beforeEach(() =&gt; {
+    angular.mock.module('ui.router');
+    angular.module('repoView', ['ui.router'])
+      .service('githubService', GitHubService)
+      .component('repoView', RepoView)
+      .component('userView', UserView);
+    angular.mock.module('repoView');
+  });
+&nbsp;
+  beforeEach(() =&gt; {
+    angular.mock.inject((_$rootScope_, _$timeout_, _$state_, _githubService_) =&gt; {
+      $rootScope = _$rootScope_;
+      $scope = $rootScope.$new();
+      $timeout = _$timeout_;
+      $state = _$state_;
+      githubService = _githubService_;
+    });
+  });
+&nbsp;
+  it('should only be used as an abstract class', () =&gt; {
+    const err = new Error('Cannot construct PageViewAbstract instances directly');
+    expect(() =&gt; {
+      return new PageViewAbstract();
+    }).toThrow(err);
+  });
+&nbsp;
+  it('should first render a loading component', angular.mock.inject($compile =&gt; {
+    const element = $compile('&lt;repo-view&gt;&lt;/repo-view&gt;')($scope);
+    $scope.$digest();
+    expect(element.find('loading').length).toEqual(1);
+  }));
+&nbsp;
+  describe('Repo View', () =&gt; {
+    it('should redirect home without a repo query', angular.mock.inject($componentController =&gt; {
+      spyOn($state, 'go');
+      $stateParams = {repo: ''};
+      const component = $componentController('repoView', {$scope, $stateParams, githubService});
+      component.$onInit();
+      expect($state.go).toHaveBeenCalledWith('app');
+    }));
+&nbsp;
+    it('should fetch a repo resource', angular.mock.inject(($componentController, $httpBackend) =&gt; {
+      $stateParams = {repo: 'angular::angular'};
+      const component = $componentController('repoView', {$scope, $timeout, $state, $stateParams, githubService});
+&nbsp;
+      const API_HOST = 'https://api.github.com/';
+      const type = 'repos';
+      const value = 'angular/angular';
+      const firstUrl = `${API_HOST}${type}/${value}`;
+      const secondUrl = `${API_HOST}${type}/${value}/contributors`;
+&nbsp;
+      $httpBackend.whenGET(firstUrl).respond(MOCK_REPOS);
+      $httpBackend.whenGET(secondUrl).respond(MOCK_CONTRIBUTORS);
+&nbsp;
+      spyOn(component, 'initView').and.callThrough();
+      spyOn(githubService, 'getResource').and.callThrough();
+&nbsp;
+      component.$onInit();
+      $timeout.flush();
+      $httpBackend.flush();
+&nbsp;
+      expect(component.initView).toHaveBeenCalledWith(type, value);
+      expect(githubService.getResource).toHaveBeenCalledWith(type, value);
+      expect(component.repo.name).toEqual('angular');
+    }));
+&nbsp;
+    it('should assign error object if no repo found', angular.mock.inject(($componentController, $httpBackend) =&gt; {
+      $stateParams = {repo: 'foo::bar'};
+      const component = $componentController('repoView', {$scope, $timeout, $state, $stateParams, githubService});
+&nbsp;
+      const API_HOST = 'https://api.github.com/';
+      const type = 'repos';
+      const value = 'foo/bar';
+      const firstUrl = `${API_HOST}${type}/${value}`;
+&nbsp;
+      $httpBackend.whenGET(firstUrl).respond({status: 400});
+&nbsp;
+      spyOn(component, 'initView').and.callThrough();
+      spyOn(githubService, 'getResource').and.callThrough();
+&nbsp;
+      component.$onInit();
+      $timeout.flush();
+      $httpBackend.flush();
+&nbsp;
+      expect(component.initView).toHaveBeenCalledWith(type, value);
+      expect(githubService.getResource).toHaveBeenCalledWith(type, value);
+      expect(component.error.message).toEqual(NO_REPO);
+    }));
+  });
+&nbsp;
+  describe('User View', () =&gt; {
+    it('should redirect home without a user query', angular.mock.inject($componentController =&gt; {
+      spyOn($state, 'go');
+      $stateParams = {user: ''};
+      const component = $componentController('userView', {$scope, $stateParams, githubService});
+      component.$onInit();
+      expect($state.go).toHaveBeenCalledWith('app');
+    }));
+&nbsp;
+    it('should fetch a user resource', angular.mock.inject(($componentController, $httpBackend) =&gt; {
+      $stateParams = {user: 'angular'};
+      const component = $componentController('userView', {$scope, $timeout, $state, $stateParams, githubService});
+&nbsp;
+      const API_HOST = 'https://api.github.com/';
+      const type = 'users';
+      const value = 'angular';
+      const firstUrl = `${API_HOST}${type}/${value}`;
+      const secondUrl = `${API_HOST}${type}/${value}/repos`;
+&nbsp;
+      $httpBackend.whenGET(firstUrl).respond(MOCK_USER);
+      $httpBackend.whenGET(secondUrl).respond(MOCK_USER_REPOS);
+&nbsp;
+      spyOn(component, 'initView').and.callThrough();
+      spyOn(githubService, 'getResource').and.callThrough();
+&nbsp;
+      component.$onInit();
+      $timeout.flush();
+      $httpBackend.flush();
+&nbsp;
+      expect(component.initView).toHaveBeenCalledWith(type, value);
+      expect(githubService.getResource).toHaveBeenCalledWith(type, value);
+      expect(component.user.name).toEqual('Angular');
+    }));
+&nbsp;
+    it('should assign error object if no user found', angular.mock.inject(($componentController, $httpBackend) =&gt; {
+      $stateParams = {user: 'foo'};
+      const component = $componentController('userView', {$scope, $timeout, $state, $stateParams, githubService});
+&nbsp;
+      const API_HOST = 'https://api.github.com/';
+      const type = 'users';
+      const value = 'foo';
+      const firstUrl = `${API_HOST}${type}/${value}`;
+&nbsp;
+      $httpBackend.whenGET(firstUrl).respond({status: 400});
+&nbsp;
+      spyOn(component, 'initView').and.callThrough();
+      spyOn(githubService, 'getResource').and.callThrough();
+&nbsp;
+      component.$onInit();
+      $timeout.flush();
+      $httpBackend.flush();
+&nbsp;
+      expect(component.initView).toHaveBeenCalledWith(type, value);
+      expect(githubService.getResource).toHaveBeenCalledWith(type, value);
+      expect(component.error.message).toEqual(NO_USER);
+    }));
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jan 04 2017 13:38:33 GMT-0500 (EST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
